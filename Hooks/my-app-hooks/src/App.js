@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const [names, setNames] = useState(() => {
+    return heavyWork();
+  });
+
+  const [input, setInput] = useState("");
+
+  const handleInputChange = (event) => {
+    setInput(e.target.value);
+  };
+
+  const handleUpload = () => {
+    setNames((prevState) => {
+      return [input, ...prevState];
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input type="text" value={input} onChange={handleInputChange} />
+      <button onClick={handleUpload}>Upload</button>
+      {names.map((personName, idx) => {
+        return <p key={idx}>{personName}</p>;
+      })}
     </div>
   );
 }

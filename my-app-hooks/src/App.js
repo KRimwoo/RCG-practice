@@ -1,32 +1,29 @@
 import logo from "./logo.svg";
 import "./App.css";
+import TimerApp from "./components/useEffect/TimerApp";
 
 function App() {
-  const [names, setNames] = useState(() => {
-    return heavyWork();
-  });
-
-  const [input, setInput] = useState("");
-
-  const handleInputChange = (event) => {
-    setInput(e.target.value);
-  };
-
-  const handleUpload = () => {
-    setNames((prevState) => {
-      return [input, ...prevState];
-    });
+  const [showTimer, setShowTimer] = useState(false);
+  const timerHandler = () => {
+    setShowTimer(!showTimer);
   };
 
   return (
     <div>
-      <input type="text" value={input} onChange={handleInputChange} />
-      <button onClick={handleUpload}>Upload</button>
-      {names.map((personName, idx) => {
-        return <p key={idx}>{personName}</p>;
-      })}
+      {showTimer && <TimerApp />}∏
+      <button onClick={timerHandler}>toggle</button>
     </div>
   );
 }
 
-export default App;
+function App() {
+  const [showTimer, setShowTimer] = useState(false);
+  return (
+    <div>
+      <button onClick={() => setShowTimer(!showTimer)}>toggle</button>
+      {showTimer && <TimerApp />}
+    </div>
+  );
+}
+
+export default App();

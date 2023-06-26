@@ -1,29 +1,7 @@
-import logo from "./logo.svg";
-import "./App.css";
-import TimerApp from "./components/useEffect/TimerApp";
+import BankApp from "./components/useReducer/BankApp";
 
 function App() {
-  const [showTimer, setShowTimer] = useState(false);
-  const timerHandler = () => {
-    setShowTimer(!showTimer);
-  };
-
-  return (
-    <div>
-      {showTimer && <TimerApp />}∏
-      <button onClick={timerHandler}>toggle</button>
-    </div>
-  );
+  return <BankApp/>
 }
 
-function App() {
-  const [showTimer, setShowTimer] = useState(false);
-  return (
-    <div>
-      <button onClick={() => setShowTimer(!showTimer)}>toggle</button>
-      {showTimer && <TimerApp />}
-    </div>
-  );
-}
-
-export default App();
+export default App;

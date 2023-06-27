@@ -1,7 +1,8 @@
+import UseInputApp from "./components/customHook/UseInputApp";
 import BankApp from "./components/useReducer/BankApp";
 
 function App() {
-  return <BankApp/>
+  return <UseInputApp/>
 }
 
 export default App;
